@@ -1,0 +1,328 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Core Colors - Light Mode */
+    --color-background: #FFFFFF; /* white */
+    --color-foreground: #0F172A; /* slate-900 */
+    --color-border: #E2E8F0; /* slate-200 */
+    --color-input: #FFFFFF; /* white */
+    --color-ring: #2563EB; /* blue-600 */
+    
+    /* Card Colors */
+    --color-card: #FFFFFF; /* white */
+    --color-card-foreground: #0F172A; /* slate-900 */
+    --color-popover: #FFFFFF; /* white */
+    --color-popover-foreground: #0F172A; /* slate-900 */
+    
+    /* Muted Colors */
+    --color-muted: #F8FAFC; /* slate-50 */
+    --color-muted-foreground: #64748B; /* slate-500 */
+    
+    /* Primary Colors */
+    --color-primary: #2563EB; /* blue-600 */
+    --color-primary-foreground: #FFFFFF; /* white */
+    
+    /* Secondary Colors */
+    --color-secondary: #64748B; /* slate-500 */
+    --color-secondary-foreground: #FFFFFF; /* white */
+    
+    /* Accent Colors */
+    --color-accent: #10B981; /* emerald-500 */
+    --color-accent-foreground: #FFFFFF; /* white */
+    
+    /* State Colors */
+    --color-success: #059669; /* emerald-600 */
+    --color-success-foreground: #FFFFFF; /* white */
+    --color-warning: #D97706; /* amber-600 */
+    --color-warning-foreground: #FFFFFF; /* white */
+    --color-error: #DC2626; /* red-600 */
+    --color-error-foreground: #FFFFFF; /* white */
+    --color-destructive: #DC2626; /* red-600 */
+    --color-destructive-foreground: #FFFFFF; /* white */
+    
+    /* Surface Colors */
+    --color-surface: #F8FAFC; /* slate-50 */
+    --color-text-primary: #0F172A; /* slate-900 */
+    --color-text-secondary: #64748B; /* slate-500 */
+  }
+
+  /* Dark Mode Colors */
+  [data-theme="dark"] {
+    --color-background: #0F172A; /* slate-900 */
+    --color-foreground: #F1F5F9; /* slate-100 */
+    --color-border: #334155; /* slate-700 */
+    --color-input: #1E293B; /* slate-800 */
+    --color-ring: #3B82F6; /* blue-500 */
+    
+    /* Card Colors */
+    --color-card: #1E293B; /* slate-800 */
+    --color-card-foreground: #F1F5F9; /* slate-100 */
+    --color-popover: #1E293B; /* slate-800 */
+    --color-popover-foreground: #F1F5F9; /* slate-100 */
+    
+    /* Muted Colors */
+    --color-muted: #334155; /* slate-700 */
+    --color-muted-foreground: #94A3B8; /* slate-400 */
+    
+    /* Primary Colors */
+    --color-primary: #3B82F6; /* blue-500 */
+    --color-primary-foreground: #F1F5F9; /* slate-100 */
+    
+    /* Secondary Colors */
+    --color-secondary: #94A3B8; /* slate-400 */
+    --color-secondary-foreground: #0F172A; /* slate-900 */
+    
+    /* Accent Colors */
+    --color-accent: #10B981; /* emerald-500 */
+    --color-accent-foreground: #F1F5F9; /* slate-100 */
+    
+    /* State Colors */
+    --color-success: #10B981; /* emerald-500 */
+    --color-success-foreground: #F1F5F9; /* slate-100 */
+    --color-warning: #F59E0B; /* amber-500 */
+    --color-warning-foreground: #F1F5F9; /* slate-100 */
+    --color-error: #EF4444; /* red-500 */
+    --color-error-foreground: #F1F5F9; /* slate-100 */
+    --color-destructive: #EF4444; /* red-500 */
+    --color-destructive-foreground: #F1F5F9; /* slate-100 */
+    
+    /* Surface Colors */
+    --color-surface: #334155; /* slate-700 */
+    --color-text-primary: #F1F5F9; /* slate-100 */
+    --color-text-secondary: #94A3B8; /* slate-400 */
+  }
+
+  /* High Contrast Mode */
+  [data-high-contrast="true"] {
+    --color-background: #FFFFFF;
+    --color-foreground: #000000;
+    --color-border: #000000;
+    --color-primary: #0000FF;
+    --color-primary-foreground: #FFFFFF;
+    --color-muted: #F0F0F0;
+    --color-muted-foreground: #000000;
+    --color-card: #FFFFFF;
+    --color-card-foreground: #000000;
+  }
+
+  [data-high-contrast="true"][data-theme="dark"] {
+    --color-background: #000000;
+    --color-foreground: #FFFFFF;
+    --color-border: #FFFFFF;
+    --color-primary: #00FFFF;
+    --color-primary-foreground: #000000;
+    --color-muted: #333333;
+    --color-muted-foreground: #FFFFFF;
+    --color-card: #000000;
+    --color-card-foreground: #FFFFFF;
+  }
+
+  /* Font Size Variations */
+  [data-font-size="small"] {
+    font-size: 14px;
+  }
+
+  [data-font-size="default"] {
+    font-size: 16px;
+  }
+
+  [data-font-size="large"] {
+    font-size: 18px;
+  }
+
+  [data-font-size="extra-large"] {
+    font-size: 20px;
+  }
+
+  /* Reduced Motion */
+  [data-reduce-motion="true"] * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  /* Smooth scrolling for conversation flow */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Focus ring styles for accessibility */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2;
+  }
+}
+
+@layer components {
+  /* Message bubble animations */
+  .message-enter {
+    @apply opacity-0 transform translate-y-2;
+    transition: opacity 200ms ease-out, transform 200ms ease-out;
+  }
+  
+  .message-enter-active {
+    @apply opacity-100 transform translate-y-0;
+  }
+  
+  /* Contextual hover states */
+  .hover-subtle {
+    transition: background-color 150ms ease-in-out;
+  }
+  
+  /* Micro-feedback animations */
+  .button-press {
+    transition: transform 100ms ease-out;
+  }
+  
+  .button-press:active {
+    @apply transform scale-[0.98];
+  }
+  
+  /* Enhanced typing animation */
+  .typing-dot {
+    @apply w-2 h-2 bg-muted-foreground rounded-full;
+    animation: typing 1.4s infinite ease-in-out;
+  }
+  
+  .typing-dot:nth-child(1) {
+    animation-delay: 0ms;
+  }
+  
+  .typing-dot:nth-child(2) {
+    animation-delay: 200ms;
+  }
+  
+  .typing-dot:nth-child(3) {
+    animation-delay: 400ms;
+  }
+  
+  @keyframes typing {
+    0%, 60%, 100% {
+      transform: translateY(0) scale(1);
+      opacity: 0.4;
+    }
+    30% {
+      transform: translateY(-8px) scale(1.1);
+      opacity: 1;
+    }
+  }
+  
+  /* Streaming cursor animation */
+  .streaming-cursor {
+    @apply inline-block w-0.5 h-4 bg-primary;
+    animation: blink 1s infinite;
+  }
+  
+  @keyframes blink {
+    0%, 50% {
+      opacity: 1;
+    }
+    51%, 100% {
+      opacity: 0;
+    }
+  }
+  
+  /* Message bubble styles */
+  .message-bubble {
+    @apply max-w-[70%] p-4 rounded-xl shadow-sm;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+  }
+  
+  /* Elevated surface styles */
+  .surface-elevated {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+  }
+
+  /* Smooth message reveal animation */
+  .message-reveal {
+    animation: messageReveal 0.3s ease-out;
+  }
+  
+  @keyframes messageReveal {
+    from {
+      opacity: 0;
+      transform: translateY(10px) scale(0.98);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+}
+
+@layer utilities {
+  /* Custom animation utilities */
+  .animate-fade-in {
+    animation: fadeIn 200ms ease-out;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 300ms ease-in-out;
+  }
+  
+  .animate-type-in {
+    animation: typeIn 0.1s ease-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideUp {
+    from {
+      transform: translateY(10px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes typeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  /* Responsive message utilities */
+  .message-width {
+    @apply max-w-[70%];
+  }
+  
+  @screen sm {
+    .message-width {
+      @apply max-w-[80%];
+    }
+  }
+  
+  @screen lg {
+    .message-width {
+      @apply max-w-[60%];
+    }
+  }
+}
